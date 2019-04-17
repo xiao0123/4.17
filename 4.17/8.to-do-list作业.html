@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.finish{
+				text-decoration: line-through;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<input type="text" name="" id="todo" value="" placeholder="请输入要做的事情" />
+		<button id="btn">增加</button>
+		<ul id="list">
+			<!--<li></li>-->
+		</ul>
+		
+		<script type="text/javascript">
+			var btn=document.querySelector("#btn");
+			var input1=document.querySelector("#todo")
+			var list=document.querySelector("#list");
+			var todo=[]
+			
+			getl();
+			
+			btn.onclick=function(){
+				var str=input1.value;
+				if(str==""){
+					
+					alert("请输入内容!");
+				}else{
+					var a={
+						a:str,
+						finish:false
+					};
+					
+					todo.push(a);
+					
+					var newli=document.createElement("li");
+					newli.innerText=str;
+					list.appendChild(newli);
+					input1.value="";
+					console.log(str)
+					
+					setl();
+//					//对象转为字符串
+//					var string1=JSON.stringify(todo);
+//					console.log(todo);
+//					console.log(string1);
+//					
+//					localStorage.setItem("a",string1);
+//					var newa=localStorage.getItem("a");
+//					//字符串转为对象
+//					var newb=JSON.parse(newa);
+//					console.log(newa)
+//					console.log(newb)
+				}
+				
+			}
+			
+			function setl(){
+				var string1=JSON.stringify(todo);
+					localStorage.setItem("a",string1);
+			}
+			function getl(){
+				var newa=localStorage.getItem("a");
+				var newb=JSON.parse(newa);
+				todo=newb;
+				
+				for(i=0;i<newb.length;i++){
+					var newli=document.createElement("li");
+					newli.innerText=newb[i].a;
+					
+					console.log(newb[i].a)
+					console.log(newli)
+					list.appendChild(newli);
+				}
+				
+				
+			}
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>
