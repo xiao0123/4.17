@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function addcookie(key,value,time,path){
+				var key=escape(key);
+				var value=escape(value);
+				var expires=new Date();
+				//gettime:时间戳，到当前的毫秒
+				//settime:
+				expires.setTime(expires.getTime()+time*1000);
+				path=path==""?"":";path="+path;
+				//_expires字符串
+				var _expires=(typeof time)=="string"?"":";expires="+ expires;
+				document.cookie=key+"="+value+_expires+path;
+				console.log(key+"="+value+_expires+path);
+			}
+			
+			addcookie('user_id','1',10,'/user');
+			
+			console.log(document.cookie);
+			
+			
+		</script>
+		
+	</body>
+</html>
