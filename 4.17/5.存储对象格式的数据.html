@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			var obj={
+				name:"小熊",
+				age:12,
+				sex:"boy"
+			};
+			//对象转为字符串
+			var str=JSON.stringify(obj);
+			console.log(str);
+			//xiaoxiong相当于key，值为str；用字符串进行存储
+			localStorage.setItem("xiaoxiong",str);
+			var newobj=localStorage.getItem("xiaoxiong");
+			//字符串转为对象
+			var newobj=JSON.parse(newobj);
+			console.log(newobj.name);
+			console.log(newobj.age);
+			
+			
+			
+			
+			
+		</script>
+		
+		
+		
+		
+	</body>
+</html>

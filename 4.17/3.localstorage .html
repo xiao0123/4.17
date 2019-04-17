@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			localStorage.setItem("id","123")
+			localStorage.setItem("name","xiaoming");
+			localStorage.setItem("sex","boy");
+			localStorage.setItem("age",12);
+			
+			console.log(localStorage.getItem("name"));
+			
+			localStorage.removeItem("id");
+			console.log(localStorage.getItem("id"));
+			
+			var all=localStorage;
+			for (var i=0;i<all.length;i++) {
+				var key=all.key(i);
+				var value=all.getItem(key);
+				console.log(key+"-"+value);
+			}
+			
+			
+		</script>
+		
+		
+		
+		
+		
+		
+	</body>
+</html>
