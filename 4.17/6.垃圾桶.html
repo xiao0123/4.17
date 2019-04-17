@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.clear{
+				overflow: hidden;
+				zoom: 1;
+			}
+			.left{
+				float: left;
+			}
+			.dragbox .box{
+				width: 100px;
+				height: 20px;
+				border: 1px solid gray;
+				background-color: gainsboro;
+				margin: 10px;
+				font-size: 12px;
+				text-align: center;
+				line-height: 20px;
+			}
+			.img2{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content clear">
+			<div class="dusbin left">
+			<img class="img1" src="images/trash1.png"/>
+			<img class="img2" src="images/trash2.jpg"/>
+			</div>
+			<div class="dragbox left">
+				<div class="box" draggable="true">文章一</div>
+				<div class="box" draggable="true">文章二</div>
+				<div class="box" draggable="true">文章三</div>
+				<div class="box" draggable="true">文章四</div>
+				<div class="box" draggable="true">文章五</div>
+				<div class="box" draggable="true">文章六</div>
+			</div>
+		</div>
+		<br />
+		<div>已经删除文章列表：</div>
+		<div class="delbox"></div>
+		
+		<script type="text/javascript">
+			var dusbin=document.querySelector(".dusbin");
+			var box=document.querySelectorAll(".dragbox .box")
+			var tmp;
+			var delbox=document.querySelector(".delbox");
+			var img1=document.querySelector(".img1");
+			var img2=document.querySelector(".img2");
+			
+			var a=function(){
+//				debugger;
+					if (delbox.innerHTML=="") {
+					
+					img1.style.display="block"
+					img2.style.display="none"
+					
+				} else{
+					img2.style.display="block";
+					img1.style.display="none"
+				}
+			}
+			
+			for (i=0;i<box.length;i++) {
+				box[i].ondragstart=function(){
+					tmp=this;
+//					console.log("拖拽开始")
+				}
+				box[i].ondragend=function(){
+					tmp=null;
+//					console.log("拖拽结束")
+				}
+			}
+			
+			dusbin.ondragover=function(e){
+				e.preventDefault();
+			}
+			
+			dusbin.ondrop=function(e){
+				e.preventDefault();
+	//			console.log("松手");
+				if(tmp!=null){
+					delbox.appendChild(tmp)
+					a();
+				}
+			}
+			
+			
+//			a();
+			
+			
+			
+			
+		</script>
+		
+	</body>
+</html>
